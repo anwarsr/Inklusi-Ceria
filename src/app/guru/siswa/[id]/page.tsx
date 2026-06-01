@@ -17,6 +17,11 @@ import { AppShell } from "@/components/AppShell";
 import { SISWA_KELOLAAN } from "@/lib/dummy";
 import { NAV_GURU } from "@/lib/nav";
 
+// Pra-render satu halaman statis untuk setiap siswa (wajib untuk output: "export").
+export function generateStaticParams() {
+  return SISWA_KELOLAAN.map((s) => ({ id: s.id }));
+}
+
 export default async function DetailSiswa({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const s = SISWA_KELOLAAN.find((x) => x.id === id);

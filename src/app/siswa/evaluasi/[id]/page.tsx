@@ -7,6 +7,11 @@ import { TugasIcon } from "@/components/icons";
 import { TUGAS } from "@/lib/dummy";
 import { NAV_SISWA } from "@/lib/nav";
 
+// Pra-render satu halaman statis untuk setiap tugas (wajib untuk output: "export").
+export function generateStaticParams() {
+  return TUGAS.map((t) => ({ id: t.id }));
+}
+
 const instruksi: Record<string, string> = {
   "rekam-suara": "Tekan tombol mikrofon yang besar, lalu sebutkan jawabannya dengan suara keras dan jelas.",
   foto: "Ambil foto karyamu atau pilih dari galeri. Foto bisa lebih dari satu kali jika kurang pas.",

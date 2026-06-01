@@ -7,6 +7,11 @@ import { MateriIcon } from "@/components/icons";
 import { MATERI } from "@/lib/dummy";
 import { NAV_SISWA } from "@/lib/nav";
 
+// Pra-render satu halaman statis untuk setiap materi (wajib untuk output: "export").
+export function generateStaticParams() {
+  return MATERI.map((m) => ({ id: m.id }));
+}
+
 export default async function MateriDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const m = MATERI.find((x) => x.id === id);
